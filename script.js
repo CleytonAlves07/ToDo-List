@@ -3,10 +3,11 @@ let textToDo = document.getElementById('texto-tarefa');
 let buttonSelector = document.getElementById('criar-tarefa');
 
 //Button add the text in the list
+let list = '';
 function buttonAdd(){
-    let list = document.createElement('li').appendChild(listToDo);
+    list = document.createElement('li');
     list.innerText = textToDo.value;
-    textToDo = remove(textToDo.value);
-    console.log(list);
+    listToDo.appendChild(list);
+    textToDo.value = '';
 }
 buttonSelector.addEventListener('click', buttonAdd);
