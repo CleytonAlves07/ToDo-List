@@ -42,8 +42,13 @@ function clearAll(){
     listToDo.remove();
 }
 buttonClear.addEventListener('click', clearAll);
-//Remove item of the list
-function removeItem(){
-        listToDo.lastElementChild.remove();
+//Remove item selected of the list
+//É uma lista dinâmica. Quando removo um li essa lista altera.Colocando o loop invertido funciona!
+function removeItemSelected(){
+    for(let i = listChildren.length -1;i >= 0 ; i -= 1){
+        if(listChildren[i].classList.contains('completed')){
+            listChildren[i].remove();
+        }
+    }
 }
-buttonRemove.addEventListener('click', removeItem);
+buttonRemove.addEventListener('click', removeItemSelected);
