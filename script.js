@@ -24,3 +24,13 @@ function selectedItem(e){
     }
 }
 listToDo.addEventListener('click', selectedItem);
+//Add class completed with double click
+let listChildren = listToDo.children
+function doubleClick(e){
+    for(let i = 0;i< listChildren.length; i += 1){
+        if(listChildren[i] === e.target){
+            listChildren[i].classList.toggle('completed');
+        }
+    }
+}
+listToDo.addEventListener('dblclick', doubleClick);
