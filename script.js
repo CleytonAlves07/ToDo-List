@@ -3,7 +3,8 @@ const textToDo = document.getElementById('texto-tarefa');
 const buttonSelector = document.getElementById('criar-tarefa');
 const buttonClear = document.getElementById('apaga-tudo');
 const buttonRemove = document.getElementById('remover-finalizados');
-const buttonSave = document.getElementById('salvar-tarefas')
+const buttonSave = document.getElementById('salvar-tarefas');
+const buttonColorRemove = document.getElementById('remover-selecionado');
 
 //Button add the text in the list
 let list = '';
@@ -66,21 +67,15 @@ function saveButton(){
     localStorage.setItem('todoList', itensInList)
 }
 buttonSave.addEventListener('click', saveButton);
-// function saveButton(){
-//     let listAgain = document.getElementById('lista-tarefas').innerHTML;
-//     console.log(listAgain);
-//     localStorage.setItem('info', JSON.stringify(listAgain)); 
-// }
-// window.onload = function(){
-//     buttonSave.addEventListener('click', saveButton);
-//     function getLocalStorage(){
-//         const getDivOl = document.getElementById('lolist');
-//         let localget = JSON.parse(localStorage.info);
-//         const newOl = createElement('ol');
-//         newOl.id = 'lista-tarefas';
-//         newOl.innerHTML = localget;
-//         getDivOl.appendChild(newOl);
-//     }
-// }
+//Remove item selected with color
+function removeColorSelected(e){
+    for(let i = 0;i < listChildren.length; i += 1){
+        if(listChildren[i] === e.target || listChildren[i].style.backgroundColor === gray){
+            listChildren[i].remove();
+        }
+    }
+}
+buttonColorRemove.addEventListener('click', removeColorSelected);
+
 
 
