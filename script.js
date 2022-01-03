@@ -1,9 +1,9 @@
-let listToDo = document.getElementById('lista-tarefas');
-let textToDo = document.getElementById('texto-tarefa');
-let buttonSelector = document.getElementById('criar-tarefa');
-let buttonClear = document.getElementById('apaga-tudo');
-let buttonRemove = document.getElementById('remover-finalizados');
-
+const listToDo = document.getElementById('lista-tarefas');
+const textToDo = document.getElementById('texto-tarefa');
+const buttonSelector = document.getElementById('criar-tarefa');
+const buttonClear = document.getElementById('apaga-tudo');
+const buttonRemove = document.getElementById('remover-finalizados');
+const buttonSave = document.getElementById('salvar-tarefas')
 
 //Button add the text in the list
 let list = '';
@@ -52,3 +52,35 @@ function removeItemSelected(){
     }
 }
 buttonRemove.addEventListener('click', removeItemSelected);
+//Save button
+const listSave = localStorage.getItem('todoList')
+listToDo.innerHTML = listSave
+function saveButton(){
+    for(let i = listChildren.length -1;i >= 0 ; i -= 1){
+        if(listChildren[i].classList.contains('completed')){
+            const itensInList = listToDo.innerHTML
+            localStorage.setItem('todoList', itensInList)
+        }
+    }
+    const itensInList = listToDo.innerHTML
+    localStorage.setItem('todoList', itensInList)
+}
+buttonSave.addEventListener('click', saveButton);
+// function saveButton(){
+//     let listAgain = document.getElementById('lista-tarefas').innerHTML;
+//     console.log(listAgain);
+//     localStorage.setItem('info', JSON.stringify(listAgain)); 
+// }
+// window.onload = function(){
+//     buttonSave.addEventListener('click', saveButton);
+//     function getLocalStorage(){
+//         const getDivOl = document.getElementById('lolist');
+//         let localget = JSON.parse(localStorage.info);
+//         const newOl = createElement('ol');
+//         newOl.id = 'lista-tarefas';
+//         newOl.innerHTML = localget;
+//         getDivOl.appendChild(newOl);
+//     }
+// }
+
+
